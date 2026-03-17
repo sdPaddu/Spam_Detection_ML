@@ -1,0 +1,323 @@
+# SMS Spam Detection using Machine Learning
+
+## Project Overview
+
+This project implements a Machine Learning based SMS Spam Detection system that classifies text messages as **Spam** or **Ham (Not Spam)** using Natural Language Processing (NLP) techniques.
+
+The system processes incoming messages, converts them into numerical features using **TF-IDF vectorization**, and classifies them using a **Multinomial Naive Bayes model**.
+
+The trained model can be used to automatically detect spam messages and can later be deployed as an API service.
+
+---
+
+# Problem Statement
+
+Spam messages are unsolicited messages often used for advertising, fraud, or phishing. Detecting such messages automatically is important for communication platforms.
+
+The goal of this project is to build a Machine Learning model that can classify SMS messages into:
+
+* Spam
+* Ham (Not Spam)
+
+This is a **Binary Text Classification Problem**.
+
+---
+
+# Dataset
+
+Dataset used: **SMS Spam Collection Dataset**
+
+The dataset contains labeled SMS messages.
+
+Example format:
+
+| Label | Message                                  |
+| ----- | ---------------------------------------- |
+| ham   | Hello how are you                        |
+| spam  | Free entry in competition win cash prize |
+
+Dataset columns:
+
+* `spamORham` → label
+* `Message` → SMS text
+
+Labels were converted into numeric values:
+
+ham → 0
+spam → 1
+
+---
+
+# Technologies Used
+
+Programming Language:
+
+* Python
+
+Libraries:
+
+* Pandas
+* Scikit-learn
+* NLTK
+* NumPy
+* Joblib
+
+Development Tools:
+
+* VS Code
+* Jupyter Notebook
+* Python Virtual Environment
+
+---
+
+# Machine Learning Pipeline
+
+The complete pipeline includes the following stages:
+
+1. Data Loading
+2. Text Preprocessing
+3. Stopword Removal
+4. Feature Extraction (TF-IDF)
+5. Model Training
+6. Model Evaluation
+7. Model Saving
+8. Prediction System
+
+Pipeline architecture:
+
+Raw Message
+↓
+Text Cleaning
+↓
+Stopword Removal
+↓
+TF-IDF Vectorization
+↓
+Naive Bayes Model
+↓
+Spam / Ham Prediction
+
+---
+
+# Text Preprocessing
+
+Messages were cleaned using the following steps:
+
+* Convert text to lowercase
+* Remove special characters
+* Remove numbers
+* Remove stopwords using NLTK
+
+Example:
+
+Original message:
+
+Free entry in 2 a weekly competition!!!
+
+Processed message:
+
+free entry weekly competition
+
+---
+
+# Feature Extraction
+
+Text data was converted into numerical vectors using **TF-IDF (Term Frequency–Inverse Document Frequency)**.
+
+TF-IDF measures how important a word is within a document relative to the entire dataset.
+
+Example:
+
+Message:
+
+"free cash prize"
+
+Converted into vector representation that can be used by the ML model.
+
+---
+
+# Model Used
+
+Model: **Multinomial Naive Bayes**
+
+Naive Bayes is widely used for:
+
+* Spam detection
+* Document classification
+* Sentiment analysis
+
+It works well with high-dimensional text data.
+
+---
+
+# Model Training
+
+The dataset was split into:
+
+* 80% Training Data
+* 20% Testing Data
+
+The model was trained using the training dataset.
+
+---
+
+# Model Evaluation
+
+The trained model was evaluated using:
+
+* Accuracy Score
+* Confusion Matrix
+
+Typical accuracy achieved:
+
+**97% – 99%**
+
+Example confusion matrix:
+
+| Actual / Predicted | Ham | Spam |
+| ------------------ | --- | ---- |
+| Ham                | 950 | 5    |
+| Spam               | 10  | 150  |
+
+---
+
+# Model Saving
+
+After training, the model and vectorizer were saved using Joblib.
+
+Files generated:
+
+models/spam_model.pkl
+models/vectorizer.pkl
+
+Both files are required for prediction because the vectorizer defines how text is converted into numerical features.
+
+---
+
+# Project Structure
+
+```
+Spam_Detection_ML
+│
+├── dataset
+│   └── spam.csv
+│
+├── notebooks
+│   └── spam_training.ipynb
+│
+├── models
+│   ├── spam_model.pkl
+│   └── vectorizer.pkl
+│
+├── test_model.py
+│
+├── requirements.txt
+│
+└── README.md
+```
+
+---
+
+# Running the Project
+
+## 1 Create Virtual Environment
+
+```bash
+python -m venv spam_ml_env
+```
+
+Activate environment:
+
+Windows:
+
+```bash
+spam_ml_env\Scripts\activate
+```
+
+---
+
+## 2 Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 3 Run Prediction Script
+
+```bash
+python test_model.py
+```
+
+Terminal example:
+
+```
+Enter message (type 'exit' to quit):
+Free cash prize claim now
+
+Prediction: Spam
+```
+
+```
+Enter message (type 'exit' to quit):
+Hi how are you
+
+Prediction: Ham
+```
+
+---
+
+# Example Usage
+
+Input message:
+
+Free money claim now
+
+Output:
+
+Spam
+
+---
+
+# Real World Applications
+
+Spam detection models are used in:
+
+* Email spam filters
+* SMS fraud detection systems
+* Social media moderation
+* Customer support message filtering
+* Marketing message classification
+
+Examples:
+
+* Gmail spam filter
+* SMS fraud detection
+* Messaging platform moderation
+
+---
+
+# Future Improvements
+
+Possible improvements include:
+
+* Deploying the model using FastAPI
+* Building a web interface
+* Training deep learning models
+* Real-time message filtering systems
+* Integrating with messaging platforms
+
+---
+
+# Conclusion
+
+This project demonstrates how Machine Learning and Natural Language Processing can be used to automatically detect spam messages.
+
+It implements a full ML workflow including data preprocessing, feature engineering, model training, evaluation, and prediction system development.
+
+The trained model can now be deployed as a service and integrated into applications for automated spam filtering.
+
+---
+
+End of README

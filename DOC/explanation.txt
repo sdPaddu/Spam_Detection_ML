@@ -1,0 +1,32 @@
+-----------------------------------------------------------------
+Explanation------------------------------------------------
+
+I built a Machine Learning based SMS Spam Detection system that classifies messages as Spam or Ham.
+I used the SMS Spam Collection dataset and implemented a full NLP pipeline.
+First, I performed text preprocessing including lowercasing, removing special characters, and eliminating stopwords using NLTK. 
+Then I converted the text into numerical features using TF-IDF vectorization.
+For the classification model I used Multinomial Naive Bayes, which performs well for text classification problems. 
+	The dataset was split into training and testing sets, and the model was trained and evaluated using accuracy and confusion matrix metrics, achieving around 97–99% accuracy.
+I then saved the trained model and vectorizer using Joblib and built a prediction function that takes a new message, processes it through the same pipeline, and predicts whether it is spam or not.
+Finally, I implemented a command-line testing script where users can enter messages and receive predictions in real time.
+The next step of the project is deploying the model using a FastAPI service so it can be integrated into applications through REST APIs.
+
+
+
+
+-----------------------------------------------------------------
+project description-------------------------------------------
+Developed an SMS Spam Detection system using Machine Learning and Natural Language Processing. Implemented text preprocessing including cleaning, stopword removal, 
+and TF-IDF vectorization to convert SMS messages into numerical features.
+ Trained a Multinomial Naive Bayes classifier to classify messages as Spam or Ham with high accuracy (~97–99%). Built a prediction pipeline and CLI testing interface to classify user-entered messages in real time. 
+The trained model and vectorizer were saved using Joblib for reusable inference.
+
+
+
+-----------------------------------------------------------------
+Overview------------------------------------------------------
+This project implements a Machine Learning based SMS Spam Detection system using Python. The system processes SMS messages through a Natural Language Processing pipeline that includes text cleaning, stopword removal, and TF-IDF feature extraction.
+ A Multinomial Naive Bayes classifier is trained to distinguish between spam and legitimate messages. The model is evaluated using accuracy and confusion matrix metrics and achieves high classification performance. 
+The trained model and vectorizer are saved and used to build a command-line prediction interface that allows users to input messages and receive spam detection results instantly. 
+The project demonstrates a complete ML workflow from data preprocessing and feature engineering to model training, evaluation, and deployment-ready inference.
+
