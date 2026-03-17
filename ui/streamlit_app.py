@@ -10,7 +10,7 @@ if st.button("Predict"):
     if message.strip() == "":
         st.warning("Please enter a message")
     else:
-        url = "http://127.0.0.1:8000/predict"
+        url = "https://spam-detection-api-k6xp.onrender.com/predict"
 
         try:
             response = requests.post(url, json={"text": message})
